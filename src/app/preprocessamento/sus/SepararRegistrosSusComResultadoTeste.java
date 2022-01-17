@@ -1,4 +1,4 @@
-package app.preprocessamento;
+package app.preprocessamento.sus;
 
 import java.io.IOException;
 import java.util.ArrayList;

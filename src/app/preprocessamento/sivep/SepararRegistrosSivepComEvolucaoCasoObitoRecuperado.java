@@ -1,4 +1,4 @@
-package app.preprocessamento;
+package app.preprocessamento.sivep;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class SepararRegistrosSivepComEvolucaoCasoObitoRecuperado {
 																	      "rm2", "qbm1", "qbm2", "qam1", "qam2"));
 		
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(ComEvolucaoCasoObitoRecuperado).csv", registrosComEvolucaoCasoObitoRecuperado);
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(SenEvolucaoCasoObitoRecuperado).csv", registrosSemEvolucaoCasoObitoRecuperado);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(SemEvolucaoCasoObitoRecuperado).csv", registrosSemEvolucaoCasoObitoRecuperado);
 	}
 
 }
