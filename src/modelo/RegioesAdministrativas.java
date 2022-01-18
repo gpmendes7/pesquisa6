@@ -1,5 +1,7 @@
 package modelo;
 
+import static app.util.StringUtil.normalizarString;
+
 public class RegioesAdministrativas {
 	
 	
@@ -235,5 +237,210 @@ public class RegioesAdministrativas {
 			                                   "Dona Eusébia", "Estrela-d'Alva", "Itamarati de Minas", "Laranjal",
 			                                   "Leopoldina", "Palma", "Pirapetinga", "Recreio",
 			                                   "Santana de Cataguases", "Santo Antônio do Aventureiro", "Volta Grande"};
+	
+	public static String obterNomeRegiaoMunicipio(String municipio) {
+		String municipioNormalizado = normalizarString(municipio);
+				
+	    for (String municipioRegiao : NOROESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Noroeste de Minas";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : NORTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Norte de Minas";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : JEQUITINHONHA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Jequitinhonha";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : VALE_MUCURI) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Vale do Mucuri";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : TRIANGULO_MINEIRO_ALTO_PARANAIBA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Triângulo Mineiro / Alto Paranaíba";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : CENTRAL_MINEIRA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Central Mineira";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : METROPOLITANA_BELO_HORIZONTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Metropolitana de Belo Horizonte";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : VALE_RIO_DOCE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Vale do Rio Doce";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : OESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Oeste de Minas";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : SUL_SUDOESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Sul / Sudoeste de Minas";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : CAMPO_VERTENTES) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Campo das Vertentes";
+	        }
+	    }
+	    
+	    for (String municipioRegiao : ZONA_MATA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return "Zona da Mata";
+	        }
+	    }
+	    
+	    
+	    return null;
+	}
+	
+	public static String[] obterRegiaoMunicipio(String municipio) {
+		String municipioNormalizado = normalizarString(municipio);
+		
+	    for (String municipioRegiao : NOROESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return NOROESTE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : NORTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return NORTE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : JEQUITINHONHA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return JEQUITINHONHA;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : VALE_MUCURI) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return VALE_MUCURI;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : TRIANGULO_MINEIRO_ALTO_PARANAIBA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return TRIANGULO_MINEIRO_ALTO_PARANAIBA;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : CENTRAL_MINEIRA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return CENTRAL_MINEIRA;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : METROPOLITANA_BELO_HORIZONTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return METROPOLITANA_BELO_HORIZONTE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : VALE_RIO_DOCE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return VALE_RIO_DOCE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : OESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return OESTE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : SUL_SUDOESTE) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return SUL_SUDOESTE;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : CAMPO_VERTENTES) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return CAMPO_VERTENTES;
+	        }
+	    }
+	    
+	    for (String municipioRegiao : ZONA_MATA) {
+	    	String municipioRegiaoNormalizado = normalizarString(municipioRegiao);
+	        
+	    	if (municipioNormalizado.equals(municipioRegiaoNormalizado)) {
+	            return ZONA_MATA;
+	        }
+	    }
+	    
+	    return null;
+	}
 
 }
