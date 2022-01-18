@@ -6,6 +6,7 @@ public class PlanilhaMGCSV {
 	private String codigo;
 	private String dataNascimento;
 	private String municipio;
+	private String filtroAreaMunicipio;
 	private String urs;
 	private String sexo;
 	private String idade;
@@ -43,22 +44,25 @@ public class PlanilhaMGCSV {
 	private String qbm2;
 	private String qam1;
 	private String qam2;
+	private String observacaoUso;
 	
 	public PlanilhaMGCSV() {
 	
 	}
 	
-	public PlanilhaMGCSV(String laboratoriox, String codigo, String dataNascimento, String municipio, String urs,
-			String sexo, String idade, String internacao, String internacaoUti, String dataInternacao, String evolucao,
-			String resultadoTeste, String dataTeste, String comorbidade, String comorbidadeDetalhe, String raca,
-			String planilha, String sintomas, String outrosSitomas, String surto, String vacinaCov, String dataColeta,
-			String arquivo, String identificacao, String municipio2, String dataNascimento2, String campo1, String ar,
-			String arx, String am1, String am2, String bm1, String bm2, String cm1, String cm2, String rm1, String rm2,
-			String qbm1, String qbm2, String qam1, String qam2) {
+	public PlanilhaMGCSV(String laboratoriox, String codigo, String dataNascimento, String municipio,
+			String filtroAreaMunicipio, String urs, String sexo, String idade, String internacao, String internacaoUti,
+			String dataInternacao, String evolucao, String resultadoTeste, String dataTeste, String comorbidade,
+			String comorbidadeDetalhe, String raca, String planilha, String sintomas, String outrosSitomas,
+			String surto, String vacinaCov, String dataColeta, String arquivo, String identificacao, String municipio2,
+			String dataNascimento2, String campo1, String ar, String arx, String am1, String am2, String bm1,
+			String bm2, String cm1, String cm2, String rm1, String rm2, String qbm1, String qbm2, String qam1,
+			String qam2, String observacaoUso) {
 		this.laboratoriox = laboratoriox;
 		this.codigo = codigo;
 		this.dataNascimento = dataNascimento;
 		this.municipio = municipio;
+		this.filtroAreaMunicipio = filtroAreaMunicipio;
 		this.urs = urs;
 		this.sexo = sexo;
 		this.idade = idade;
@@ -96,7 +100,10 @@ public class PlanilhaMGCSV {
 		this.qbm2 = qbm2;
 		this.qam1 = qam1;
 		this.qam2 = qam2;
+		this.observacaoUso = observacaoUso;
 	}
+
+
 
 	public String getLaboratoriox() {
 		return laboratoriox;
@@ -128,6 +135,14 @@ public class PlanilhaMGCSV {
 
 	public void setMunicipio(String municipio) {
 		this.municipio = municipio;
+	}
+	
+	public String getFiltroAreaMunicipio() {
+		return filtroAreaMunicipio;
+	}
+	
+	public void setFiltroAreaMunicipio(String filtroAreaMunicipio) {
+		this.filtroAreaMunicipio = filtroAreaMunicipio;
 	}
 
 	public String getUrs() {
@@ -424,6 +439,14 @@ public class PlanilhaMGCSV {
 
 	public void setQam2(String qam2) {
 		this.qam2 = qam2;
+	}
+	
+	public String getObservacaoUso() {
+		return observacaoUso;
+	}
+	
+	public void setObservacaoUso(String observacaoUso) {
+		this.observacaoUso = observacaoUso;
 	}
 
 }

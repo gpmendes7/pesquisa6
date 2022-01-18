@@ -24,7 +24,7 @@ private static ColumnPositionMappingStrategy<PlanilhaMGCSV> strategy;
 		strategy = new ColumnPositionMappingStrategy<PlanilhaMGCSV>();
 		strategy.setType(PlanilhaMGCSV.class);
 
-		String[] colunas = { "laboratoriox", "codigo", "dataNascimento", "municipio",
+		String[] colunas = { "laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 				             "urs", "sexo", "idade", "internacao", "internacaoUti",
 				             "dataInternacao", "evolucao", "resultadoTeste", "dataTeste",
 				             "comorbidade", "comorbidadeDetalhe", "raca", "planilha",
@@ -33,7 +33,7 @@ private static ColumnPositionMappingStrategy<PlanilhaMGCSV> strategy;
 				             "dataNascimento2", "campo1", "ar", "arx", "am1",
 				             "am2", "bm1", "bm2", "cm1",
 				             "cm2", "rm1", "rm2", "qbm1",
-				             "qbm2", "qam1", "qam2"};
+				             "qbm2", "qam1", "qam2", "observacaoUso"};
  
 		strategy.setColumnMapping(colunas);
 	}

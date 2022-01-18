@@ -34,7 +34,7 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 		System.out.println("Total de registros SUS MG com resultado teste: " + registrosComResultadoTeste.size());
 		System.out.println("Total de registros SUS MG sem resultado teste: " + registrosSemResultadoTeste.size());
 		
-		registrosComResultadoTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", 
+		registrosComResultadoTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 											                "urs", "sexo", "idade", "internacao", 
 											                "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
 											                "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
@@ -43,9 +43,9 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 											                "municipio2", "dataNascimento2", "campo1", "ar", 
 											                "arx", "am1", "am2", "bm1", 
 											                "bm2", "cm1", "cm2", "rm1", 
-											                "rm2", "qbm1", "qbm2", "qam1", "qam2"));
+											                "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 
-		registrosSemResultadoTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", 
+		registrosSemResultadoTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 													        "urs", "sexo", "idade", "internacao", 
 													        "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
 													        "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
@@ -54,7 +54,7 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 													        "municipio2", "dataNascimento2", "campo1", "ar", 
 													        "arx", "am1", "am2", "bm1", 
 													        "bm2", "cm1", "cm2", "rm1", 
-													        "rm2", "qbm1", "qbm2", "qam1", "qam2"));
+													        "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(ComResultadoTeste).csv", registrosComResultadoTeste);
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(SemResultadoTeste).csv", registrosSemResultadoTeste);
