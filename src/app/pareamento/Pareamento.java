@@ -93,14 +93,14 @@ public class Pareamento {
 			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoPositivo = new ArrayList<>();
 			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoNegativo = new ArrayList<>();
 
-			while (filtragem < 10 && (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS
-					              || registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS)) {
+			while (filtragem < 9 && (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS
+					             || registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS)) {
 				fileWriter.write("---------------------------\n");
 				fileWriter.write("Filtragem " + filtragem + "\n");
 
 				List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep = filtrarRegistrosSusNaoUsados(registrosSusAtualizado);
 
-				if (filtragem < 10) {
+				if (filtragem < 9) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosPorFaixaEtaria(registrosSusFiltradosRegistroSivep, 
 							                                                            idadeMinima, idadeMaxima);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por faixa etária\n");
@@ -108,15 +108,16 @@ public class Pareamento {
 					fileWriter.write("Não filtrou registros do sus por faixa etária\n");
 				}
 				
-				if (filtragem < 9) {
+				/*
+				if (filtragem < 8) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorRacaCor(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por raça cor\n");
 				} else {
 					fileWriter.write("Não filtrou registros do sus por raça cor\n");
-				}
+				}*/
 
-				if (filtragem < 8) {
+				if (filtragem < 7) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorDataTeste(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado, numeroSemanas);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus com "
@@ -125,7 +126,7 @@ public class Pareamento {
 					fileWriter.write("Não filtrou registros do sus por data de notificação\n");
 				}
 
-				if (filtragem < 4) {
+				if (filtragem < 3) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorMunicipio(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por município\n");
@@ -133,7 +134,7 @@ public class Pareamento {
 					fileWriter.write("Não filtrou registros do sus por município\n");
 				}
 
-				if (filtragem == 4) {
+				if (filtragem == 3) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorAreaMunicipio(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por área\n");
@@ -141,7 +142,7 @@ public class Pareamento {
 					fileWriter.write("Não filtrou registros do sus por área\n");
 				}
 				
-				if (filtragem < 3) {
+				if (filtragem < 2) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorSexo(registrosSusFiltradosRegistroSivep,
 							registroSivepFiltrado);
 					fileWriter.write(
@@ -164,14 +165,14 @@ public class Pareamento {
 							obterRegistrosUsadosComResultadoNegativo(registrosSusFiltradosRegistroSivep, qtdRegistros));
 				}
 
-				fileWriter.write("Número atual de registros do sus usados com resultado Positivo após filtragem "
+				fileWriter.write("Número atual de registros do sus usados com resultado Detectado após filtragem "
 						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoPositivo.size() + "\n");
-				fileWriter.write("Número atual de registros do sus usados com resultado Negativo após filtragem "
+				fileWriter.write("Número atual de registros do sus usados com resultado Não Detectado após filtragem "
 						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoNegativo.size() + "\n");
 
 				filtragem++;
 
-				if (filtragem > 4 && filtragem < 8) {
+				if (filtragem > 3 && filtragem < 7) {
 					numeroSemanas++;
 				}
 				
@@ -186,7 +187,7 @@ public class Pareamento {
 
 			if (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS
 					|| registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS) {
-				fileWriter.write("Número de registros do sus com resultado Positivo e Negativo insuficientes! Registro "
+				fileWriter.write("Número de registros do sus com resultado Detectado e Não Detectado insuficientes! Registro "
 						+ registro + " não será usado!\n");
 				fileWriter.write(
 						"Registros do sus filtrados usados vão ser desmarcados para uso posterior para filtro de outro registro sivep!\n");

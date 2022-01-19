@@ -42,17 +42,15 @@ public class FiltrosPareamento {
 	
 	
 	public static List<PlanilhaMGCSV> filtrarRegistrosSusPorDataTeste(List<PlanilhaMGCSV> registrosSus, PlanilhaMGCSV registroSivepFiltrado, int numeroSemanas) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException, ParseException {
-		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-		Date dataInternacaoSivep = sdf1.parse(registroSivepFiltrado.getDataInternacao());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date dataInternacaoSivep = sdf.parse(registroSivepFiltrado.getDataInternacao());
 		Date data1 = alterarDiasEmData(dataInternacaoSivep, numeroSemanas * -7);
 		Date data2 = alterarDiasEmData(dataInternacaoSivep, numeroSemanas * 7);
-
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 		
 		List<PlanilhaMGCSV> registrosSusFiltradosPorDataTeste = new ArrayList<PlanilhaMGCSV>();
 		
 		for (PlanilhaMGCSV registro : registrosSus) {
-			Date dataTesteSus = sdf2.parse(registro.getDataTeste());
+			Date dataTesteSus = sdf.parse(registro.getDataTeste());
 			if(dataEstaEmIntervalo(data1, data2, dataTesteSus)) {
 				registrosSusFiltradosPorDataTeste.add(registro);
 			}
