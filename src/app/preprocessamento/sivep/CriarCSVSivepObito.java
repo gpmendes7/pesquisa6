@@ -39,7 +39,7 @@ public class CriarCSVSivepObito {
 														         "bm2", "cm1", "cm2", "rm1", 
 														         "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(OBITO).csv", registrosSivepObito);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/obito/SIVEP-MG(OBITO).csv", registrosSivepObito);
 	}
 
 

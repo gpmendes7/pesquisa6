@@ -39,7 +39,7 @@ public class CriarCSVSivepRecuperado {
 														         "bm2", "cm1", "cm2", "rm1", 
 														         "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(RECUPERADO).csv", registrosSivepRecuperado);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/recuperado/SIVEP-MG(RECUPERADO).csv", registrosSivepRecuperado);
 	}
 
 

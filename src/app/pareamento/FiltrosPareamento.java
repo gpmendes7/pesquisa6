@@ -28,12 +28,6 @@ public class FiltrosPareamento {
 						 .collect(Collectors.toList());
 	}
 	
-	public static List<PlanilhaMGCSV> filtrarRegistrosSivepPorResultadoPositivo(List<PlanilhaMGCSV> registros) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {	
-		return registros.stream()
-						 .filter(r -> StringUtil.normalizarString(r.getResultadoTeste()).equals(StringUtil.normalizarString("Positivo")))
-						 .collect(Collectors.toList());
-	}
-	
 	public static List<PlanilhaMGCSV> filtrarRegistrosSusNaoUsados(List<PlanilhaMGCSV> registrosSus) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		return registrosSus.stream()
 							.filter(r -> r.getObservacaoUso() == null || r.getObservacaoUso().equals(""))
@@ -108,38 +102,7 @@ public class FiltrosPareamento {
 						   .filter(r -> StringUtil.normalizarString(r.getRaca()).equals(StringUtil.normalizarString(registroSivepFiltrado.getRaca())))
 						   .collect(Collectors.toList());
 	}
-	
-	
-	/*
-	public static List<PlanilhaMGCSV> filtrarRegistrosSusPorTipoTesteComCovid(List<PlanilhaMGCSV> registrosSus) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {	
-		List<SusRedomeCSV> registrosSusFiltradosSusPorRTPCR = registrosSus.stream()
-																				    .filter(r -> StringUtil.normalizarString(r.getTipoTeste()).equals(StringUtil.normalizarString("RT-PCR")))
-																				    .collect(Collectors.toList());
-				
-		List<SusRedomeCSV> registrosSusFiltradosSusPorAntigeno = registrosSus.stream()
-																					  .filter(r -> StringUtil.normalizarString(r.getTipoTeste()).equals(StringUtil.normalizarString("TESTE RÁPIDO - ANTÍGENO")))
-																					  .collect(Collectors.toList());
 		
-		List<SusRedomeCSV> registrosSusFiltradosSusPorEnzimaElisaIgm = registrosSus.stream()
-																					   .filter(r -> StringUtil.normalizarString(r.getTipoTeste()).equals(StringUtil.normalizarString("Enzimaimunoensaio - ELISA IgM")))
-																					   .collect(Collectors.toList());
-		
-		List<SusRedomeCSV> registrosSusOutros = new ArrayList<SusRedomeCSV>(registrosSus);
-		registrosSusOutros.removeAll(registrosSusFiltradosSusPorRTPCR);
-		registrosSusOutros.removeAll(registrosSusFiltradosSusPorAntigeno);
-		registrosSusOutros.removeAll(registrosSusFiltradosSusPorEnzimaElisaIgm);
-		
-		List<SusRedomeCSV> registrosSusFitradosPorTipoTesteComCovid = new ArrayList<SusRedomeCSV>();
-		registrosSusFitradosPorTipoTesteComCovid.addAll(registrosSusFiltradosSusPorRTPCR);
-		registrosSusFitradosPorTipoTesteComCovid.addAll(registrosSusFiltradosSusPorAntigeno);
-		registrosSusFitradosPorTipoTesteComCovid.addAll(registrosSusFiltradosSusPorEnzimaElisaIgm);
-		registrosSusFitradosPorTipoTesteComCovid.addAll(registrosSusOutros);
-		
-		return registrosSusFitradosPorTipoTesteComCovid;
-	}
-	
-	*/
-	
 	public static List<PlanilhaMGCSV> filtrarRegistrosSusPorResultado(List<PlanilhaMGCSV> registrosSus, String resultadoTeste) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {	
 		return registrosSus.stream()
 					       .filter(r -> StringUtil.normalizarString(r.getResultadoTeste()).equals(StringUtil.normalizarString(resultadoTeste)))
