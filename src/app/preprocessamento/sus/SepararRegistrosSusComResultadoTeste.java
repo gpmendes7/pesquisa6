@@ -15,7 +15,7 @@ public class SepararRegistrosSusComResultadoTeste {
 	
 public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 		
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/ESUS-MG.csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/ESUS-MG.csv");
 		
 		List<PlanilhaMGCSV> registrosComResultadoTeste = new ArrayList<>();
 		List<PlanilhaMGCSV> registrosSemResultadoTeste = new ArrayList<>();
@@ -56,8 +56,8 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 													        "bm2", "cm1", "cm2", "rm1", 
 													        "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(ComResultadoTeste).csv", registrosComResultadoTeste);
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(SemResultadoTeste).csv", registrosSemResultadoTeste);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(ComResultadoTeste).csv", registrosComResultadoTeste);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(SemResultadoTeste).csv", registrosSemResultadoTeste);
 	}
 
 }

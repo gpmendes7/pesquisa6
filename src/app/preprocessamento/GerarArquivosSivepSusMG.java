@@ -52,8 +52,8 @@ public class GerarArquivosSivepSusMG {
 							                  "bm2", "cm1", "cm2", "rm1", 
 							                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG.csv", registrosSivep);
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/ESUS-MG.csv", registrosSus);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sivep/SIVEP-MG.csv", registrosSivep);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/ESUS-MG.csv", registrosSus);
 	}
 
 }

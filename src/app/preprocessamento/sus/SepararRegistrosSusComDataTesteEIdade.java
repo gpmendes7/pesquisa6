@@ -13,7 +13,7 @@ import csv.PlanilhaMGCSVHandler;
 public class SepararRegistrosSusComDataTesteEIdade {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/SUS-MG(ComResultadoTeste).csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/SUS-MG(ComResultadoTeste).csv");
 		
 		List<PlanilhaMGCSV> registrosSusComDataTesteEIdade = new ArrayList<>();
 		
@@ -40,7 +40,7 @@ public class SepararRegistrosSusComDataTesteEIdade {
 									                  "bm2", "cm1", "cm2", "rm1", 
 									                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(ComDataTesteEIdade).csv", registrosSusComDataTesteEIdade);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(ComDataTesteEIdade).csv", registrosSusComDataTesteEIdade);
 	}
 
 }

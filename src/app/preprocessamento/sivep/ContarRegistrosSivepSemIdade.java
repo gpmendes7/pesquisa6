@@ -13,7 +13,7 @@ import csv.PlanilhaMGCSVHandler;
 public class ContarRegistrosSivepSemIdade {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/SIVEP-MG(ComEvolucaoCasoObitoRecuperado).csv");
+        List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/SIVEP-MG(ComEvolucaoCasoObitoRecuperado).csv");
 		
 		List<PlanilhaMGCSV> registrosRegistrosSivepSemIdade = new ArrayList<>();
 		
@@ -38,7 +38,7 @@ public class ContarRegistrosSivepSemIdade {
 														         "bm2", "cm1", "cm2", "rm1", 
 														         "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(SemIdade).csv", registrosRegistrosSivepSemIdade);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sivep/SIVEP-MG(SemIdade).csv", registrosRegistrosSivepSemIdade);
 	}
 
 }

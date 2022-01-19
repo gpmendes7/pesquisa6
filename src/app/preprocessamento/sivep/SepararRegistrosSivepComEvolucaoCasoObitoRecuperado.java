@@ -15,7 +15,7 @@ public class SepararRegistrosSivepComEvolucaoCasoObitoRecuperado {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 		
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/SIVEP-MG.csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/SIVEP-MG.csv");
 		
 		List<PlanilhaMGCSV> registrosComEvolucaoCasoObitoRecuperado = new ArrayList<>();
 		List<PlanilhaMGCSV> registrosSemEvolucaoCasoObitoRecuperado = new ArrayList<>();
@@ -56,8 +56,8 @@ public class SepararRegistrosSivepComEvolucaoCasoObitoRecuperado {
 																	      "bm2", "cm1", "cm2", "rm1", 
 																	      "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(ComEvolucaoCasoObitoRecuperado).csv", registrosComEvolucaoCasoObitoRecuperado);
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SIVEP-MG(SemEvolucaoCasoObitoRecuperado).csv", registrosSemEvolucaoCasoObitoRecuperado);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sivep/SIVEP-MG(ComEvolucaoCasoObitoRecuperado).csv", registrosComEvolucaoCasoObitoRecuperado);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sivep/SIVEP-MG(SemEvolucaoCasoObitoRecuperado).csv", registrosSemEvolucaoCasoObitoRecuperado);
 	}
 
 }

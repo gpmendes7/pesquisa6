@@ -13,7 +13,7 @@ import csv.PlanilhaMGCSVHandler;
 public class ContarRegistrosSusSemIdade {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/SUS-MG(ComResultadoTeste).csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/SUS-MG(ComResultadoTeste).csv");
 		
 		List<PlanilhaMGCSV> registrosSusSemIdade = new ArrayList<>();
 		
@@ -38,7 +38,7 @@ public class ContarRegistrosSusSemIdade {
 									                  "bm2", "cm1", "cm2", "rm1", 
 									                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(SemIdade).csv", registrosSusSemIdade);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(SemIdade).csv", registrosSusSemIdade);
 	}
 
 }

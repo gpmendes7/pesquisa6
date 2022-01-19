@@ -13,7 +13,7 @@ import csv.PlanilhaMGCSVHandler;
 class ContarRegistrosSusSemDataTeste {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/SUS-MG(ComResultadoTeste).csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/SUS-MG(ComResultadoTeste).csv");
 		
 		List<PlanilhaMGCSV> registrosSusSemDataTeste = new ArrayList<>();
 		
@@ -28,17 +28,17 @@ class ContarRegistrosSusSemDataTeste {
 		System.out.println("Total de registros SUS MG sem data teste: " + registrosSusSemDataTeste.size());
 		
 		registrosSusSemDataTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
-											                   "urs", "sexo", "idade", "internacao", 
-											                   "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
-											                   "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
-											                   "planilha", "sintomas", "outrosSitomas", "surto", 
-											                   "vacinaCov", "dataColeta", "arquivo", "identificacao", 
-											                   "municipio2", "dataNascimento2", "campo1", "ar", 
-											                   "arx", "am1", "am2", "bm1", 
-											                   "bm2", "cm1", "cm2", "rm1", 
-											                   "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
+									                      "urs", "sexo", "idade", "internacao", 
+									                      "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
+									                      "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
+									                      "planilha", "sintomas", "outrosSitomas", "surto", 
+									                      "vacinaCov", "dataColeta", "arquivo", "identificacao", 
+									                      "municipio2", "dataNascimento2", "campo1", "ar", 
+									                      "arx", "am1", "am2", "bm1", 
+									                      "bm2", "cm1", "cm2", "rm1", 
+									                      "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
 		
-		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/SUS-MG(SemDataTeste).csv", registrosSusSemDataTeste);
+		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(SemDataTeste).csv", registrosSusSemDataTeste);
 	}
 
 
