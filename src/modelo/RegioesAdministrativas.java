@@ -7,7 +7,7 @@ public class RegioesAdministrativas {
 	
 	private static final String[] NOROESTE = {"Arinos", "Bonfinópolis de Minas", "Buritis", "Cabeceira Grande",
 			                                  "Dom Bosco", "Formoso", "Natalândia", "Unaí",
-			                                  "Uruana de Minas", "Brasilândia de Minas", "Guarda-Mor", "João Pinheiro",
+			                                  "Uruana de Minas", "Brasilândia de Minas", "Guarda Mor", "João Pinheiro",
 			                                  "João Pinheiro", "Lagoa Grande", "Paracatu", "Presidente Olegário",
 			                                  "São Gonçalo do Abaeté", "Varjão de Minas", "Vazante"};
 	
@@ -205,7 +205,7 @@ public class RegioesAdministrativas {
 			                                   "Jequeri", "Oratórios", "Piedade de Ponte Nova", "Ponte Nova",
 			                                   "Raul Soares", "Rio Casca", "Rio Doce", "Santa Cruz do Escalvado",
 			                                   "Santo Antônio do Grama", "São Pedro dos Ferros", "Sem-Peixe", "Sericita",
-			                                   "Urucânia", "Vermelho Novo", "Abre-Campo", "Alto Caparaó",
+			                                   "Urucânia", "Vermelho Novo", "Abre Campo", "Alto Caparaó",
 			                                   "Alto Jequitibá", "Caparaó", "Caputira", "Chalé",
 			                                   "Durandé", "Lajinha", "Luisburgo", "Manhuaçu",
 			                                   "Manhumirim", "Martins Soares", "Matipó", "Pedra Bonita",
@@ -234,7 +234,7 @@ public class RegioesAdministrativas {
 			                                   "Rochedo de Minas", "Santa Bárbara do Monte Verde", "Santa Rita do Ibitipoca", "Santa Rita do Jacutinga",
 			                                   "Santana do Deserto", "Santos Dumont", "São João Nepomuceno", "Senador Cortes",
 			                                   "Simão Pereira", "Além Paraíba", "Argirita", "Cataguases",
-			                                   "Dona Eusébia", "Estrela-d'Alva", "Itamarati de Minas", "Laranjal",
+			                                   "Dona Eusébia", "Estrela d'Alva", "Itamarati de Minas", "Laranjal",
 			                                   "Leopoldina", "Palma", "Pirapetinga", "Recreio",
 			                                   "Santana de Cataguases", "Santo Antônio do Aventureiro", "Volta Grande"};
 	

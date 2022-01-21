@@ -45,6 +45,7 @@ public class PlanilhaMGCSV {
 	private String qam1;
 	private String qam2;
 	private String observacaoUso;
+	private String etniaRedome;
 	
 	public PlanilhaMGCSV() {
 	
@@ -57,7 +58,7 @@ public class PlanilhaMGCSV {
 			String surto, String vacinaCov, String dataColeta, String arquivo, String identificacao, String municipio2,
 			String dataNascimento2, String campo1, String ar, String arx, String am1, String am2, String bm1,
 			String bm2, String cm1, String cm2, String rm1, String rm2, String qbm1, String qbm2, String qam1,
-			String qam2, String observacaoUso) {
+			String qam2, String observacaoUso, String etniaRedome) {
 		this.laboratoriox = laboratoriox;
 		this.codigo = codigo;
 		this.dataNascimento = dataNascimento;
@@ -101,6 +102,7 @@ public class PlanilhaMGCSV {
 		this.qam1 = qam1;
 		this.qam2 = qam2;
 		this.observacaoUso = observacaoUso;
+		this.etniaRedome = etniaRedome;
 	}
 
 
@@ -447,6 +449,14 @@ public class PlanilhaMGCSV {
 	
 	public void setObservacaoUso(String observacaoUso) {
 		this.observacaoUso = observacaoUso;
+	}
+	
+	public String getEtniaRedome() {
+		return etniaRedome;
+	}
+	
+	public void setEtniaRedome(String etniaRedome) {
+		this.etniaRedome = etniaRedome;
 	}
 
 }

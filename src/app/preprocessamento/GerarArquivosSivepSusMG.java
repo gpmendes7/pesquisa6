@@ -15,7 +15,7 @@ public class GerarArquivosSivepSusMG {
 	
 	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 		
-		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/Planilha cruzada - Porto (Modificado).csv");
+		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/Planilha MG(SemRepeticao).csv");
 		
 		List<PlanilhaMGCSV> registrosSivep = new ArrayList<PlanilhaMGCSV>();
 		List<PlanilhaMGCSV> registrosSus = new ArrayList<PlanilhaMGCSV>();
@@ -30,6 +30,9 @@ public class GerarArquivosSivepSusMG {
 			}
 		}
 		
+		System.out.println("Total de registros SIVEP MG: " + registrosSivep.size());
+		System.out.println("Total de registros ESUS MG: " + registrosSus.size());
+		
 		registrosSivep.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 				                                "urs", "sexo", "idade", "internacao", 
 					                            "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
@@ -39,7 +42,7 @@ public class GerarArquivosSivepSusMG {
 					                            "municipio2", "dataNascimento2", "campo1", "ar", 
 					                            "arx", "am1", "am2", "bm1", 
 					                            "bm2", "cm1", "cm2", "rm1", 
-					                            "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
+					                            "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 		
 		registrosSus.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 							                  "urs", "sexo", "idade", "internacao", 
@@ -50,7 +53,7 @@ public class GerarArquivosSivepSusMG {
 							                  "municipio2", "dataNascimento2", "campo1", "ar", 
 							                  "arx", "am1", "am2", "bm1", 
 							                  "bm2", "cm1", "cm2", "rm1", 
-							                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
+							                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 		
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sivep/SIVEP-MG.csv", registrosSivep);
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/ESUS-MG.csv", registrosSus);
