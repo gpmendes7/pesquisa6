@@ -105,8 +105,6 @@ public class PlanilhaMGCSV {
 		this.etniaRedome = etniaRedome;
 	}
 
-
-
 	public String getLaboratoriox() {
 		return laboratoriox;
 	}

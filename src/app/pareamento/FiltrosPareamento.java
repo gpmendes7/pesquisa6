@@ -95,9 +95,9 @@ public class FiltrosPareamento {
 	}
 	
 
-	public static List<PlanilhaMGCSV> filtrarRegistrosSusPorRacaCor(List<PlanilhaMGCSV> registrosSus, PlanilhaMGCSV registroSivepFiltrado) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+	public static List<PlanilhaMGCSV> filtrarRegistrosSusPorEtniaRedome(List<PlanilhaMGCSV> registrosSus, PlanilhaMGCSV registroSivepFiltrado) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		return registrosSus.stream()
-						   .filter(r -> StringUtil.normalizarString(r.getRaca()).equals(StringUtil.normalizarString(registroSivepFiltrado.getRaca())))
+						   .filter(r -> StringUtil.normalizarString(r.getEtniaRedome()).equals(StringUtil.normalizarString(registroSivepFiltrado.getEtniaRedome())))
 						   .collect(Collectors.toList());
 	}
 		
