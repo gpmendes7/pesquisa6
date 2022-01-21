@@ -43,7 +43,7 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 											                "municipio2", "dataNascimento2", "campo1", "ar", 
 											                "arx", "am1", "am2", "bm1", 
 											                "bm2", "cm1", "cm2", "rm1", 
-											                "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
+											                "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 
 		registrosSemResultadoTeste.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 													        "urs", "sexo", "idade", "internacao", 
@@ -54,7 +54,7 @@ public static void main(String[] args) throws IOException, CsvDataTypeMismatchEx
 													        "municipio2", "dataNascimento2", "campo1", "ar", 
 													        "arx", "am1", "am2", "bm1", 
 													        "bm2", "cm1", "cm2", "rm1", 
-													        "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso"));
+													        "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 		
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(ComResultadoTeste).csv", registrosComResultadoTeste);
 		PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/sus/SUS-MG(SemResultadoTeste).csv", registrosSemResultadoTeste);
