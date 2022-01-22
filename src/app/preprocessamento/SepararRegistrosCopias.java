@@ -2,9 +2,10 @@ package app.preprocessamento;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
@@ -19,22 +20,27 @@ public class SepararRegistrosCopias {
 		
 		List<PlanilhaMGCSV> registros = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/Planilha MG.csv");
 		
-		Set<String> chaves = new HashSet<>();
-		List<PlanilhaMGCSV> registrosSemCopias = new ArrayList<PlanilhaMGCSV>();
+		Map<String, PlanilhaMGCSV> mapaCampo1Registro = new HashMap<>();
 		int qtdCopias = 0;
 		
 		for (PlanilhaMGCSV registro : registros) {
 			String campo1 = StringUtil.normalizarString(registro.getCampo1());
-			String planilha = StringUtil.normalizarString(registro.getPlanilha());
-			String chave = campo1 + planilha;
 			
-			if(!chaves.contains(chave)) {
-				chaves.add(chave);
-				registrosSemCopias.add(registro);
-			} else {
+			PlanilhaMGCSV registroCopia = mapaCampo1Registro.get(campo1);
+			
+			if(registroCopia != null) {
 				qtdCopias++;
-			}
+				String planilha = StringUtil.normalizarString(registroCopia.getPlanilha());
+				if(!planilha.equals("SIVEP")) {
+					mapaCampo1Registro.put(campo1, registro);
+				}
+			} else {
+				mapaCampo1Registro.put(campo1, registro);
+			}			
 		}
+		
+		Collection<PlanilhaMGCSV> values = mapaCampo1Registro.values();
+		List<PlanilhaMGCSV> registrosSemCopias = new ArrayList<>(values);
 		
 		System.out.println("Total de registros: " + registros.size());
 		System.out.println("Total de registros únicos gerados (considerando campo1): " + registrosSemCopias.size());
