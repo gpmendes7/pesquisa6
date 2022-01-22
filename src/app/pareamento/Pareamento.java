@@ -121,9 +121,9 @@ public class Pareamento {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorDataTeste(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado, numeroSemanas);
 					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus com "
-							+ numeroSemanas + " semana(s) para trás e para frente por data de notificação\n");
+							+ numeroSemanas + " semana(s) para trás e para frente por data de teste\n");
 				} else {
-					fileWriter.write("Não filtrou registros do sus por data de notificação\n");
+					fileWriter.write("Não filtrou registros do sus por data de teste\n");
 				}
 
 				if (filtragem < 3) {
