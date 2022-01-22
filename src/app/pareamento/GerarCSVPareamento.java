@@ -65,9 +65,9 @@ public class GerarCSVPareamento {
 		registrosSusFaixa3.stream().forEach(r -> r.setIntervalo("58-78"));
 		
 
-		registrosPareamento.addAll(registrosSivepFaixa1);
-		registrosPareamento.addAll(registrosSivepFaixa2);
-		registrosPareamento.addAll(registrosSivepFaixa3);
+		registrosPareamento.addAll(registrosSusFaixa1);
+		registrosPareamento.addAll(registrosSusFaixa2);
+		registrosPareamento.addAll(registrosSusFaixa3);
 	}
 	
 	private static void carregarDadosRecuperado() throws IOException {
