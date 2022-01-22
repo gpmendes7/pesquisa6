@@ -36,7 +36,7 @@ public class SepararRegistrosSivepComEvolucaoCasoObitoRecuperado {
 		
 		registrosComEvolucaoCasoObitoRecuperado.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 														                 "urs", "sexo", "idade", "internacao", 
-														                 "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
+														                 "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
 														                 "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
 														                 "planilha", "sintomas", "outrosSitomas", "surto", 
 														                 "vacinaCov", "dataColeta", "arquivo", "identificacao", 
@@ -47,7 +47,7 @@ public class SepararRegistrosSivepComEvolucaoCasoObitoRecuperado {
 
 		registrosSemEvolucaoCasoObitoRecuperado.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 																	      "urs", "sexo", "idade", "internacao", 
-																	      "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
+																	      "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
 																	      "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
 																	      "planilha", "sintomas", "outrosSitomas", "surto", 
 																	      "vacinaCov", "dataColeta", "arquivo", "identificacao", 

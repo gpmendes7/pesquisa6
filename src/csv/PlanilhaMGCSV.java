@@ -14,6 +14,7 @@ public class PlanilhaMGCSV {
 	private String internacaoUti;
 	private String dataInternacao;
 	private String evolucao;
+	private String intervalo;
 	private String resultadoTeste;
 	private String dataTeste;
 	private String comorbidade;
@@ -53,7 +54,7 @@ public class PlanilhaMGCSV {
 	
 	public PlanilhaMGCSV(String laboratoriox, String codigo, String dataNascimento, String municipio,
 			String filtroAreaMunicipio, String urs, String sexo, String idade, String internacao, String internacaoUti,
-			String dataInternacao, String evolucao, String resultadoTeste, String dataTeste, String comorbidade,
+			String dataInternacao, String evolucao, String intervalo, String resultadoTeste, String dataTeste, String comorbidade,
 			String comorbidadeDetalhe, String raca, String planilha, String sintomas, String outrosSitomas,
 			String surto, String vacinaCov, String dataColeta, String arquivo, String identificacao, String municipio2,
 			String dataNascimento2, String campo1, String ar, String arx, String am1, String am2, String bm1,
@@ -71,6 +72,7 @@ public class PlanilhaMGCSV {
 		this.internacaoUti = internacaoUti;
 		this.dataInternacao = dataInternacao;
 		this.evolucao = evolucao;
+		this.intervalo = intervalo;
 		this.resultadoTeste = resultadoTeste;
 		this.dataTeste = dataTeste;
 		this.comorbidade = comorbidade;
@@ -199,6 +201,14 @@ public class PlanilhaMGCSV {
 
 	public void setEvolucao(String evolucao) {
 		this.evolucao = evolucao;
+	}
+	
+	public String getIntervalo() {
+		return intervalo;
+	}
+	
+	public void setIntervalo(String intervalo) {
+		this.intervalo = intervalo;
 	}
 
 	public String getResultadoTeste() {

@@ -23,7 +23,7 @@ public class GerarCSVPareamento {
 		
 		registrosPareamento.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 									                 "urs", "sexo", "idade", "internacao", 
-									                 "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
+									                 "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
 									                 "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
 									                 "planilha", "sintomas", "outrosSitomas", "surto", 
 									                 "vacinaCov", "dataColeta", "arquivo", "identificacao", 
@@ -36,29 +36,72 @@ public class GerarCSVPareamento {
 	}
 	
 	private static void carregarDadosObito() throws IOException {
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre25E45Anos).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre46E57Anos).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre58E78Anos).csv"));
+		List<PlanilhaMGCSV> registrosSivepFaixa1 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre25E45Anos).csv");
+		registrosSivepFaixa1.stream().forEach(r -> r.setIntervalo("25-45"));
 		
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre25E45AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre25E45AnosResultadoNaoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre46E57AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre46E57AnosResultadoNaoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre58E78AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre58E78AnosResultadoNaoDetectado).csv"));
+		List<PlanilhaMGCSV> registrosSivepFaixa2 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre46E57Anos).csv");
+		registrosSivepFaixa2.stream().forEach(r -> r.setIntervalo("46-57"));
+		
+		List<PlanilhaMGCSV> registrosSivepFaixa3 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre58E78Anos).csv");
+		registrosSivepFaixa3.stream().forEach(r -> r.setIntervalo("58-78"));
+		
+		registrosPareamento.addAll(registrosSivepFaixa1);
+		registrosPareamento.addAll(registrosSivepFaixa2);
+		registrosPareamento.addAll(registrosSivepFaixa3);
+		
+		List<PlanilhaMGCSV> registrosSusFaixa1 = new ArrayList<>();
+		registrosSusFaixa1.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre25E45AnosResultadoDetectado).csv"));
+		registrosSusFaixa1.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre25E45AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa1.stream().forEach(r -> r.setIntervalo("25-45"));
+		
+		List<PlanilhaMGCSV> registrosSusFaixa2 = new ArrayList<>();
+		registrosSusFaixa2.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre46E57AnosResultadoDetectado).csv"));
+		registrosSusFaixa2.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre46E57AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa2.stream().forEach(r -> r.setIntervalo("46-57"));
+		
+		List<PlanilhaMGCSV> registrosSusFaixa3 = new ArrayList<>();
+		registrosSusFaixa3.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre58E78AnosResultadoDetectado).csv"));
+		registrosSusFaixa3.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/obito/SUS-MG(PacientesObitoEntre58E78AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa3.stream().forEach(r -> r.setIntervalo("58-78"));
+		
+
+		registrosPareamento.addAll(registrosSivepFaixa1);
+		registrosPareamento.addAll(registrosSivepFaixa2);
+		registrosPareamento.addAll(registrosSivepFaixa3);
 	}
 	
 	private static void carregarDadosRecuperado() throws IOException {
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre20E40Anos).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre41E51Anos).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre52E74Anos).csv"));
+		List<PlanilhaMGCSV> registrosSivepFaixa1 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre20E40Anos).csv");
+		registrosSivepFaixa1.stream().forEach(r -> r.setIntervalo("20-40"));
 		
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre20E40AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre20E40AnosResultadoNaoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre41E51AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre41E51AnosResultadoNaoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre52E74AnosResultadoDetectado).csv"));
-		registrosPareamento.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre52E74AnosResultadoNaoDetectado).csv"));
+		List<PlanilhaMGCSV> registrosSivepFaixa2 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre41E51Anos).csv");
+		registrosSivepFaixa2.stream().forEach(r -> r.setIntervalo("41-51"));
+		
+		List<PlanilhaMGCSV> registrosSivepFaixa3 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre52E74Anos).csv");
+		registrosSivepFaixa3.stream().forEach(r -> r.setIntervalo("52-74"));
+		
+		registrosPareamento.addAll(registrosSivepFaixa1);
+		registrosPareamento.addAll(registrosSivepFaixa2);
+		registrosPareamento.addAll(registrosSivepFaixa3);
+		
+		List<PlanilhaMGCSV> registrosSusFaixa1 = new ArrayList<>();
+		registrosSusFaixa1.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre20E40AnosResultadoDetectado).csv"));
+		registrosSusFaixa1.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre20E40AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa1.stream().forEach(r -> r.setIntervalo("20-40"));
+		
+		List<PlanilhaMGCSV> registrosSusFaixa2 = new ArrayList<>();
+		registrosSusFaixa2.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre41E51AnosResultadoDetectado).csv"));
+		registrosSusFaixa2.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre41E51AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa2.stream().forEach(r -> r.setIntervalo("41-51"));
+		
+		List<PlanilhaMGCSV> registrosSusFaixa3 = new ArrayList<>();
+		registrosSusFaixa3.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre52E74AnosResultadoDetectado).csv"));
+		registrosSusFaixa3.addAll(PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sus/recuperado/SUS-MG(PacientesRecuperadoEntre52E74AnosResultadoNaoDetectado).csv"));	
+		registrosSusFaixa3.stream().forEach(r -> r.setIntervalo("52-74"));
+		
+		registrosPareamento.addAll(registrosSusFaixa1);
+		registrosPareamento.addAll(registrosSusFaixa2);
+		registrosPareamento.addAll(registrosSusFaixa3);
 	}
 
 }

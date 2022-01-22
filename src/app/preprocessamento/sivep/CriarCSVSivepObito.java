@@ -30,7 +30,7 @@ public class CriarCSVSivepObito {
 		
 		registrosSivepObito.add(0, new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 											         "urs", "sexo", "idade", "internacao", 
-											         "internacaoUti", "dataInternacao", "evolucao", "resultadoTeste", 
+											         "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
 											         "dataTeste", "comorbidade", "comorbidadeDetalhe", "raca", 
 											         "planilha", "sintomas", "outrosSitomas", "surto", 
 											         "vacinaCov", "dataColeta", "arquivo", "identificacao", 

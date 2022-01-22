@@ -26,7 +26,7 @@ private static ColumnPositionMappingStrategy<PlanilhaMGCSV> strategy;
 
 		String[] colunas = { "laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 				             "urs", "sexo", "idade", "internacao", "internacaoUti",
-				             "dataInternacao", "evolucao", "resultadoTeste", "dataTeste",
+				             "dataInternacao", "evolucao", "intervalo", "resultadoTeste", "dataTeste",
 				             "comorbidade", "comorbidadeDetalhe", "raca", "planilha",
 				             "sintomas", "outrosSitomas", "surto", "vacinaCov",
 				             "dataColeta", "arquivo", "identificacao", "municipio2",
