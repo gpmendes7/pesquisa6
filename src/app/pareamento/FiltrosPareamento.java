@@ -83,6 +83,7 @@ public class FiltrosPareamento {
 							
 					if(municipioRegistroNormalizado.equals(municipioRegiaoNormalizado)) {
 						registrosSusFiltradosPorAreaMunicipio.add(registroSus);
+						break;
 					}
 				}
 				

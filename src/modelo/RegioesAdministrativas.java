@@ -31,9 +31,9 @@ public class RegioesAdministrativas {
 			                               "Luislândia", "Mirabela", "Montes Claros", "Patis",
 			                               "Ponto Chique", "São João da Lagoa", "São João da Ponte", "São João do Pacuí",
 			                               "Ubaí", "Varzelândia", "Verdelândia", "Botumirim",
-			                               "Cristália", "Grão-Mogol", "Itacambira", "Josenópolis",
+			                               "Cristália", "Grão Mogol", "Itacambira", "Josenópolis",
 			                               "Padre Carvalho", "Bocaiúva", "Engenheiro Navarro", "Francisco Dumont",
-			                               "Guaraciama", "Olhos-d'Água"};
+			                               "Guaraciama", "Olhos d'Água"};
 	
 
 	private static final String[] JEQUITINHONHA = {"Couto de Magalhães de Minas", "Datas", "Diamantina", "Felício dos Santos",
@@ -110,7 +110,7 @@ public class RegioesAdministrativas {
 			                                                      "Moeda", "Piedade dos Gerais", "Rio Manso", "Diogo de Vasconcelos",
 			                                                      "Itabirito", "Mariana", "Ouro Preto", "Casa Grande",
 			                                                      "Catas Altas da Noruega", "Congonhas", "Conselheiro Lafaiete", "Cristiano Otôni",
-			                                                      "Desterro de Entre-Rios", "Entre-Rios de Minas", "Itaverava", "Ouro Branco",
+			                                                      "Desterro de Entre Rios", "Entre Rios de Minas", "Itaverava", "Ouro Branco",
 			                                                      "Queluzito", "Santana dos Montes", "São Brás do Suaçuí"};
 	
 	private static final String[] VALE_RIO_DOCE = {"Braúnas", "Carmésia", "Coluna", "Divinolândia de Minas",
@@ -131,9 +131,9 @@ public class RegioesAdministrativas {
 			                                       "Ipatinga", "Jaguaraçu", "Joanésia", "Marliéria",
 			                                       "Mesquita", "Naque", "Periquito", "Santana do Paraíso",
 			                                       "Timóteo", "Bom Jesus do Galho", "Bugre", "Caratinga",
-			                                       "Córrego Novo", "Dom Cavati", "Entre-Folhas", "Iapu",
+			                                       "Córrego Novo", "Dom Cavati", "Entre Folhas", "Iapu",
 			                                       "Imbé de Minas", "Inhapim", "Ipaba", "Piedade de Caratinga",
-			                                       "Pingo-d'Água", "Santa Rita de Minas", "São Domingos das Dores", "São João do Oriente",
+			                                       "Pingo d'Água", "Santa Rita de Minas", "São Domingos das Dores", "São João do Oriente",
 			                                       "São Sebastião do Anta", "Tarumirim", "Ubaporanga", "Vargem Alegre",
 			                                       "Aimorés", "Alvarenga", "Conceição de Ipanema", "Conselheiro Pena",
 			                                       "Cuparaque", "Goiabeira", "Ipanema", "Itueta",
@@ -149,7 +149,7 @@ public class RegioesAdministrativas {
 			                               "Aguanil", "Campo Belo", "Cana Verde", "Candeias",
 			                               "Cristais", "Perdões", "Santana do Jacaré", "Bom Sucesso",
 			                               "Carmo da Mata", "Carmópolis de Minas", "Ibituruna", "Oliveira",
-			                               "Passa-Tempo", "Piracema", "Santo Antônio do Amparo", "São Francisco de Paula"};
+			                               "Passa Tempo", "Piracema", "Santo Antônio do Amparo", "São Francisco de Paula"};
 	
 	private static final String[] SUL_SUDOESTE = {"Alpinópolis", "Bom Jesus da Penha", "Capetinga", "Capitólio",
 			                                      "Cássia", "Claraval", "Delfinópolis", "Fortaleza de Minas",
@@ -172,7 +172,7 @@ public class RegioesAdministrativas {
 			                                      "Camanducaia", "Cambuí", "Congonhal", "Córrego do Bom Jesus",
 			                                      "Espírito Santo do Dourado", "Estiva", "Extrema", "Gonçalves", 
 			                                      "Ipuiúna", "Itapeva", "Munhoz", "Pouso Alegre", 
-			                                      "Sapucaí-Mirim", "Senador Amaral", "Senador José Bento", "Tocos do Moji",
+			                                      "Sapucaí Mirim", "Senador Amaral", "Senador José Bento", "Tocos do Moji",
 			                                      "Toledo", "Cachoeira de Minas", "Careaçu", "Conceição das Pedras", 
 			                                      "Conceição dos Ouros", "Cordislândia", "Heliodora", "Natércia", 
 			                                      "Pedralva", "Santa Rita do Sapucaí", "São Gonçalo do Sapucaí", "São João da Mata",
@@ -180,10 +180,10 @@ public class RegioesAdministrativas {
 			                                      "Alagoa", "Baependi", "Cambuquira", "Carmo de Minas",
 			                                      "Caxambu", "Conceição do Rio Verde", "Itamonte",
 			                                      "Itanhandu", "Jesuânia", "Lambari", "Olímpio Noronha",
-			                                      "Passa-Quatro", "Pouso Alto", "São Lourenço", "São Sebastião do Rio Verde",
+			                                      "Passa Quatro", "Pouso Alto", "São Lourenço", "São Sebastião do Rio Verde",
 			                                      "Soledade de Minas", "Aiuruoca", "Andrelândia", "Arantina",
 			                                      "Bocaina de Minas", "Bom Jardim de Minas", "Carvalhos", "Cruzília",
-			                                      "Liberdade", "Minduri", "Passa-Vinte", "São Vicente de Minas", "Seritinga",
+			                                      "Liberdade", "Minduri", "Passa Vinte", "São Vicente de Minas", "Seritinga",
 			                                      "Serranos", "Brasópolis", "Consolação", "Cristina",
 			                                      "Delfim Moreira", "Dom Viçoso", "Itajubá", "Maria da Fé", "Marmelópolis",
 			                                      "Paraisópolis", "Piranguçu", "Piranguinho", "Venceslau Brás",
@@ -195,7 +195,7 @@ public class RegioesAdministrativas {
 			                                         "Ribeirão Vermelho", "Conceição da Barra de Minas", "Coronel Xavier Chaves", "Dores de Campos",
 			                                         "Lagoa Dourada", "Madre de Deus de Minas", "Nazareno", "Piedade do Rio Grande",
 			                                         "Prados", "Resende Costa", "Ritápolis", "Santa Cruz de Minas",
-			                                         "Santana do Garambéu", "São João del-Rei", "São Tiago", "Tiradentes",
+			                                         "Santana do Garambéu", "São João del Rei", "São Tiago", "Tiradentes",
 			                                         "Alfredo Vasconcelos", "Antônio Carlos", "Barbacena", "Barroso",
 			                                         "Capela Nova", "Caranaíba", "Carandaí", "Desterro do Melo",
 			                                         "Ibertioga", "Ressaquinha", "Santa Bárbara do Tugúrio", "Senhora dos Remédios"};
@@ -204,7 +204,7 @@ public class RegioesAdministrativas {
 	private static final String[] ZONA_MATA = {"Acaiaca", "Barra Longa", "Dom Silvério", "Guaraciaba",
 			                                   "Jequeri", "Oratórios", "Piedade de Ponte Nova", "Ponte Nova",
 			                                   "Raul Soares", "Rio Casca", "Rio Doce", "Santa Cruz do Escalvado",
-			                                   "Santo Antônio do Grama", "São Pedro dos Ferros", "Sem-Peixe", "Sericita",
+			                                   "Santo Antônio do Grama", "São Pedro dos Ferros", "Sem Peixe", "Sericita",
 			                                   "Urucânia", "Vermelho Novo", "Abre Campo", "Alto Caparaó",
 			                                   "Alto Jequitibá", "Caparaó", "Caputira", "Chalé",
 			                                   "Durandé", "Lajinha", "Luisburgo", "Manhuaçu",

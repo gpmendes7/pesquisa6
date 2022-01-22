@@ -156,13 +156,13 @@ public class Pareamento {
 				if (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS) {
 					qtdRegistros = NUMERO_POSITIVO_NEGATIVOS - registrosSusFiltradosRegistroSivepComResultadoPositivo.size();
 					registrosSusFiltradosRegistroSivepComResultadoPositivo.addAll(
-							obterRegistrosUsadosComResultadoPositivo(registrosSusFiltradosRegistroSivep, qtdRegistros));
+							obterRegistrosUsadosComResultadoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
 				}
 
 				if (registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS) {
 					qtdRegistros = NUMERO_POSITIVO_NEGATIVOS - registrosSusFiltradosRegistroSivepComResultadoNegativo.size();
 					registrosSusFiltradosRegistroSivepComResultadoNegativo.addAll(
-							obterRegistrosUsadosComResultadoNegativo(registrosSusFiltradosRegistroSivep, qtdRegistros));
+							obterRegistrosUsadosComResultadoNaoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
 				}
 
 				fileWriter.write("Número atual de registros do sus usados com resultado Detectado após filtragem "
@@ -282,55 +282,58 @@ public class Pareamento {
 		PlanilhaMGCSVHandler.criarCSV(csvSivepNaoUsados, registrosSivepNaoUsados);
 	}
 
-	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoNegativo(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd)
+	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoNaoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd)
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNegativo = filtrarRegistrosSusPorResultado(
+		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNaoDetectado = filtrarRegistrosSusPorResultado(
 				registrosSusFiltradosRegistroSivep, "Nao Detectado");
-		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoNegativo.size()
+		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoNaoDetectado.size()
 				+ " registros do sus com resultado Não Detectado\n");
+		
 
-		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoNegativo);
+		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoNaoDetectado);
+		
 
-		registrosSusFiltradosComResultadoNegativo.stream().limit(qtd)
+		registrosSusFiltradosComResultadoNaoDetectado.stream().limit(qtd)
 				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
+		
+		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoNaoDetectado);
 
-		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoNegativo);
-
-		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNegativoUsados = registrosSusFiltradosComResultadoNegativo
+		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNaoDetectadoUsados = registrosSusFiltradosComResultadoNaoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
 				.collect(Collectors.toList());
-		if (registrosSusFiltradosComResultadoNegativoUsados.size() > 0) {
-			fileWriter.write("Foram usados " + registrosSusFiltradosComResultadoNegativoUsados.size()
+
+		if (registrosSusFiltradosComResultadoNaoDetectadoUsados.size() > 0) {
+			fileWriter.write("Foram usados " + registrosSusFiltradosComResultadoNaoDetectadoUsados.size()
 					+ " registros do sus com resultado Não Detectado\n");
 		}
 
-		return registrosSusFiltradosComResultadoNegativoUsados;
+		return registrosSusFiltradosComResultadoNaoDetectadoUsados;
 	}
 
-	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoPositivo(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd) 
+	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd) 
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoPositivo = filtrarRegistrosSusPorResultado(
+		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoDetectado = filtrarRegistrosSusPorResultado(
 				registrosSusFiltradosRegistroSivep, "Detectado");
-		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoPositivo.size()
+		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoDetectado.size()
 				+ " registros do sus com resultado Detectado\n");
+		
+		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoDetectado);
 
-		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoPositivo);
-
-		registrosSusFiltradosComResultadoPositivo.stream().limit(qtd)
+		registrosSusFiltradosComResultadoDetectado.stream().limit(qtd)
 				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
 
-		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoPositivo);
+		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoDetectado);
 
-		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoPositivoUsados = registrosSusFiltradosComResultadoPositivo
+		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoDetectadoUsados = registrosSusFiltradosComResultadoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
 				.collect(Collectors.toList());
 
-		if (registrosSusFiltradosComResultadoPositivoUsados.size() > 0) {
-			fileWriter.write("Foram usados " + registrosSusFiltradosComResultadoPositivoUsados.size()
+		if (registrosSusFiltradosComResultadoDetectadoUsados.size() > 0) {
+			fileWriter.write("Foram usados " + registrosSusFiltradosComResultadoDetectadoUsados.size()
 					+ " registros do sus com resultado Detectado\n");
 		}
 
-		return registrosSusFiltradosComResultadoPositivoUsados;
+		return registrosSusFiltradosComResultadoDetectadoUsados;
 	}
 
 }
