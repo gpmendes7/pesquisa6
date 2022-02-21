@@ -25,7 +25,7 @@ import csv.PlanilhaMGCSVHandler;
 
 public class Pareamento {
 	
-	private final static int NUMERO_POSITIVO_NEGATIVOS = 2; 
+	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 2; 
 
 	private List<PlanilhaMGCSV> registrosSivep;
 	private List<PlanilhaMGCSV> registrosSus;
@@ -60,12 +60,12 @@ public class Pareamento {
 	}
 
 	public void parearPacientesEntreSivepESus(int idadeMinima, int idadeMaxima, String arquivoTxt,
-			String csvResultadoPositivo, String csvResultadoNegativo, String csvSivepUsados, String csvSivepNaoUsados)
+			String csvResultadoDetectado, String csvResultadoNaoDetectado, String csvSivepUsados, String csvSivepNaoUsados)
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException, ParseException {
 		List<PlanilhaMGCSV> registrosSivepFiltrados = filtrarRegistrosPorFaixaEtaria(registrosSivep, idadeMinima, idadeMaxima);
 		
-		List<PlanilhaMGCSV> registrosSusTotaisFiltradosComResultadoPositivo = new ArrayList<>();
-		List<PlanilhaMGCSV> registrosSusTotaisFiltradosComResultadoNegativo = new ArrayList<>();
+		List<PlanilhaMGCSV> registrosSusTotaisFiltradosComResultadoDetectado = new ArrayList<>();
+		List<PlanilhaMGCSV> registrosSusTotaisFiltradosComResultadoNaoDetectado = new ArrayList<>();
 
 		file = new File(arquivoTxt);
 		fileWriter = new FileWriter(file);
@@ -90,11 +90,11 @@ public class Pareamento {
 
 			int filtragem = 1;
 			int numeroSemanas = 1;
-			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoPositivo = new ArrayList<>();
-			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoNegativo = new ArrayList<>();
+			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoDetectado = new ArrayList<>();
+			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoNaoDetectado = new ArrayList<>();
 
-			while (filtragem < 9 && (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS
-					             || registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS)) {
+			while (filtragem < 9 && (registrosSusFiltradosRegistroSivepComResultadoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO
+					             || registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO)) {
 				fileWriter.write("---------------------------\n");
 				fileWriter.write("Filtragem " + filtragem + "\n");
 
@@ -153,22 +153,22 @@ public class Pareamento {
 
 				int qtdRegistros;
 
-				if (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS) {
-					qtdRegistros = NUMERO_POSITIVO_NEGATIVOS - registrosSusFiltradosRegistroSivepComResultadoPositivo.size();
-					registrosSusFiltradosRegistroSivepComResultadoPositivo.addAll(
-							obterRegistrosUsadosComResultadoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
+				if (registrosSusFiltradosRegistroSivepComResultadoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO) {
+					qtdRegistros = NUMERO_DETECTADO_E_NAO_DETECTADO - registrosSusFiltradosRegistroSivepComResultadoDetectado.size();
+					registrosSusFiltradosRegistroSivepComResultadoDetectado.addAll(
+							obterRegistrosSusUsadosComResultadoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
 				}
 
-				if (registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS) {
-					qtdRegistros = NUMERO_POSITIVO_NEGATIVOS - registrosSusFiltradosRegistroSivepComResultadoNegativo.size();
-					registrosSusFiltradosRegistroSivepComResultadoNegativo.addAll(
-							obterRegistrosUsadosComResultadoNaoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
+				if (registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO) {
+					qtdRegistros = NUMERO_DETECTADO_E_NAO_DETECTADO - registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size();
+					registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.addAll(
+							obterRegistrosSusUsadosComResultadoNaoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
 				}
 
 				fileWriter.write("Número atual de registros do sus usados com resultado Detectado após filtragem "
-						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoPositivo.size() + "\n");
+						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoDetectado.size() + "\n");
 				fileWriter.write("Número atual de registros do sus usados com resultado Não Detectado após filtragem "
-						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoNegativo.size() + "\n");
+						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() + "\n");
 
 				filtragem++;
 
@@ -176,8 +176,8 @@ public class Pareamento {
 					numeroSemanas++;
 				}
 				
-				if(registrosSusFiltradosRegistroSivepComResultadoPositivo.size() == NUMERO_POSITIVO_NEGATIVOS &&
-				   registrosSusFiltradosRegistroSivepComResultadoNegativo.size() == NUMERO_POSITIVO_NEGATIVOS) {
+				if(registrosSusFiltradosRegistroSivepComResultadoDetectado.size() == NUMERO_DETECTADO_E_NAO_DETECTADO &&
+				   registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() == NUMERO_DETECTADO_E_NAO_DETECTADO) {
 					break;
 				}
 			}
@@ -185,36 +185,32 @@ public class Pareamento {
 			fileWriter.write("---------------------------\n");
 			fileWriter.write("Resultados finais após filtragem " + (filtragem - 1) + "\n");
 
-			if (registrosSusFiltradosRegistroSivepComResultadoPositivo.size() < NUMERO_POSITIVO_NEGATIVOS
-					|| registrosSusFiltradosRegistroSivepComResultadoNegativo.size() < NUMERO_POSITIVO_NEGATIVOS) {
+			if (registrosSusFiltradosRegistroSivepComResultadoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO
+					|| registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO) {
 				fileWriter.write("Número de registros do sus com resultado Detectado e Não Detectado insuficientes! Registro "
 						+ registro + " não será usado!\n");
 				fileWriter.write(
 						"Registros do sus filtrados usados vão ser desmarcados para uso posterior para filtro de outro registro sivep!\n");
 
-				registrosSusAtualizado.removeAll(registrosSusFiltradosRegistroSivepComResultadoPositivo);
-				registrosSusFiltradosRegistroSivepComResultadoPositivo.stream().forEach(r -> r.setObservacaoUso(""));
-				registrosSusFiltradosRegistroSivepComResultadoPositivo.stream()
+				registrosSusFiltradosRegistroSivepComResultadoDetectado.stream().forEach(r -> r.setObservacaoUso(""));
+				registrosSusFiltradosRegistroSivepComResultadoDetectado.stream()
 						.forEach(r -> r.setFiltroAreaMunicipio(""));
-				registrosSusAtualizado.addAll(registrosSusFiltradosRegistroSivepComResultadoPositivo);
 
-				registrosSusAtualizado.removeAll(registrosSusFiltradosRegistroSivepComResultadoNegativo);
-				registrosSusFiltradosRegistroSivepComResultadoNegativo.stream().forEach(r -> r.setObservacaoUso(""));
-				registrosSusFiltradosRegistroSivepComResultadoNegativo.stream()
+				registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.stream().forEach(r -> r.setObservacaoUso(""));
+				registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.stream()
 						.forEach(r -> r.setFiltroAreaMunicipio(""));
-				registrosSusAtualizado.addAll(registrosSusFiltradosRegistroSivepComResultadoNegativo);
 
 				registrosSivepNaoUsados.add(registroSivepFiltrado);
 			} else {
-				fileWriter.write("Número final de registros do sus usados com resultado Positivo: "
-						+ registrosSusFiltradosRegistroSivepComResultadoPositivo.size() + "\n");
-				fileWriter.write("Número final de registros do sus usados com resultado Negativo: "
-						+ registrosSusFiltradosRegistroSivepComResultadoNegativo.size() + "\n");
+				fileWriter.write("Número final de registros do sus usados com resultado Detectado: "
+						+ registrosSusFiltradosRegistroSivepComResultadoDetectado.size() + "\n");
+				fileWriter.write("Número final de registros do sus usados com resultado Não Detectado: "
+						+ registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() + "\n");
 
-				registrosSusTotaisFiltradosComResultadoPositivo
-						.addAll(registrosSusFiltradosRegistroSivepComResultadoPositivo);
-				registrosSusTotaisFiltradosComResultadoNegativo
-						.addAll(registrosSusFiltradosRegistroSivepComResultadoNegativo);
+				registrosSusTotaisFiltradosComResultadoDetectado
+						.addAll(registrosSusFiltradosRegistroSivepComResultadoDetectado);
+				registrosSusTotaisFiltradosComResultadoNaoDetectado
+						.addAll(registrosSusFiltradosRegistroSivepComResultadoNaoDetectado);
 			}
 
 			fileWriter.write("***************************\n");
@@ -223,7 +219,7 @@ public class Pareamento {
 		fileWriter.flush();
 		fileWriter.close();
 
-		registrosSusTotaisFiltradosComResultadoPositivo.add(0,
+		registrosSusTotaisFiltradosComResultadoDetectado.add(0,
 				new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 				                  "urs", "sexo", "idade", "internacao", 
 				                  "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
@@ -235,9 +231,9 @@ public class Pareamento {
 				                  "bm2", "cm1", "cm2", "rm1", 
 				                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 		
-		PlanilhaMGCSVHandler.criarCSV(csvResultadoPositivo, registrosSusTotaisFiltradosComResultadoPositivo);
+		PlanilhaMGCSVHandler.criarCSV(csvResultadoDetectado, registrosSusTotaisFiltradosComResultadoDetectado);
 
-		registrosSusTotaisFiltradosComResultadoNegativo.add(0,
+		registrosSusTotaisFiltradosComResultadoNaoDetectado.add(0,
 				new PlanilhaMGCSV("laboratoriox", "codigo", "dataNascimento", "municipio", "filtroAreaMunicipio",
 					              "urs", "sexo", "idade", "internacao", 
 					              "internacaoUti", "dataInternacao", "evolucao", "intervalo", "resultadoTeste", 
@@ -249,7 +245,7 @@ public class Pareamento {
 					              "bm2", "cm1", "cm2", "rm1", 
 					              "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
 		
-		PlanilhaMGCSVHandler.criarCSV(csvResultadoNegativo, registrosSusTotaisFiltradosComResultadoNegativo);
+		PlanilhaMGCSVHandler.criarCSV(csvResultadoNaoDetectado, registrosSusTotaisFiltradosComResultadoNaoDetectado);
 
 		registrosSivepFiltrados.removeAll(registrosSivepNaoUsados);
 
@@ -282,22 +278,16 @@ public class Pareamento {
 		PlanilhaMGCSVHandler.criarCSV(csvSivepNaoUsados, registrosSivepNaoUsados);
 	}
 
-	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoNaoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd)
+	private List<PlanilhaMGCSV> obterRegistrosSusUsadosComResultadoNaoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd)
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNaoDetectado = filtrarRegistrosSusPorResultado(
 				registrosSusFiltradosRegistroSivep, "Nao Detectado");
 		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoNaoDetectado.size()
 				+ " registros do sus com resultado Não Detectado\n");
 		
-
-		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoNaoDetectado);
-		
-
 		registrosSusFiltradosComResultadoNaoDetectado.stream().limit(qtd)
 				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
 		
-		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoNaoDetectado);
-
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNaoDetectadoUsados = registrosSusFiltradosComResultadoNaoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
 				.collect(Collectors.toList());
@@ -310,19 +300,15 @@ public class Pareamento {
 		return registrosSusFiltradosComResultadoNaoDetectadoUsados;
 	}
 
-	private List<PlanilhaMGCSV> obterRegistrosUsadosComResultadoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd) 
+	private List<PlanilhaMGCSV> obterRegistrosSusUsadosComResultadoDetectado(List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep, int qtd) 
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoDetectado = filtrarRegistrosSusPorResultado(
 				registrosSusFiltradosRegistroSivep, "Detectado");
 		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoDetectado.size()
 				+ " registros do sus com resultado Detectado\n");
 		
-		registrosSusAtualizado.removeAll(registrosSusFiltradosComResultadoDetectado);
-
 		registrosSusFiltradosComResultadoDetectado.stream().limit(qtd)
 				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
-
-		registrosSusAtualizado.addAll(registrosSusFiltradosComResultadoDetectado);
 
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoDetectadoUsados = registrosSusFiltradosComResultadoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
