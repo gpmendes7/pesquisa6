@@ -25,7 +25,7 @@ import csv.PlanilhaMGCSVHandler;
 
 public class Pareamento {
 	
-	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 2; 
+	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 4; 
 
 	private List<PlanilhaMGCSV> registrosSivep;
 	private List<PlanilhaMGCSV> registrosSus;
@@ -54,7 +54,7 @@ public class Pareamento {
 										                "municipio2", "dataNascimento2", "campo1", "ar", 
 										                "arx", "am1", "am2", "bm1", 
 										                "bm2", "cm1", "cm2", "rm1", 
-										                "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+										                "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 
 		PlanilhaMGCSVHandler.criarCSV(csvSusAtualizado, registrosSusAtualizado); 
 	}
@@ -125,7 +125,16 @@ public class Pareamento {
 				} else {
 					fileWriter.write("Não filtrou registros do sus por data de teste\n");
 				}
+				
+				if (filtragem < 3) {
+					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorAreaMunicipio(
+							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
+					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por área\n");
+				} else {
+					fileWriter.write("Não filtrou registros do sus por área\n");
+				}
 
+				/*
 				if (filtragem < 3) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorMunicipio(
 							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
@@ -141,6 +150,7 @@ public class Pareamento {
 				} else {
 					fileWriter.write("Não filtrou registros do sus por área\n");
 				}
+				*/
 				
 				if (filtragem < 2) {
 					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorSexo(registrosSusFiltradosRegistroSivep,
@@ -229,7 +239,7 @@ public class Pareamento {
 				                  "municipio2", "dataNascimento2", "campo1", "ar", 
 				                  "arx", "am1", "am2", "bm1", 
 				                  "bm2", "cm1", "cm2", "rm1", 
-				                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+				                  "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 		
 		PlanilhaMGCSVHandler.criarCSV(csvResultadoDetectado, registrosSusTotaisFiltradosComResultadoDetectado);
 
@@ -243,7 +253,7 @@ public class Pareamento {
 					              "municipio2", "dataNascimento2", "campo1", "ar", 
 					              "arx", "am1", "am2", "bm1", 
 					              "bm2", "cm1", "cm2", "rm1", 
-					              "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+					              "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 		
 		PlanilhaMGCSVHandler.criarCSV(csvResultadoNaoDetectado, registrosSusTotaisFiltradosComResultadoNaoDetectado);
 
@@ -259,7 +269,7 @@ public class Pareamento {
 					              "municipio2", "dataNascimento2", "campo1", "ar", 
 					              "arx", "am1", "am2", "bm1", 
 					              "bm2", "cm1", "cm2", "rm1", 
-					              "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+					              "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 
 		PlanilhaMGCSVHandler.criarCSV(csvSivepUsados, registrosSivepFiltrados);
 
@@ -273,7 +283,7 @@ public class Pareamento {
 			                      "municipio2", "dataNascimento2", "campo1", "ar", 
 			                      "arx", "am1", "am2", "bm1", 
 			                      "bm2", "cm1", "cm2", "rm1", 
-			                      "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+			                      "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 
 		PlanilhaMGCSVHandler.criarCSV(csvSivepNaoUsados, registrosSivepNaoUsados);
 	}

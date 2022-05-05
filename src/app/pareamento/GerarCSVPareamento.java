@@ -30,7 +30,7 @@ public class GerarCSVPareamento {
 									                 "municipio2", "dataNascimento2", "campo1", "ar", 
 									                 "arx", "am1", "am2", "bm1", 
 									                 "bm2", "cm1", "cm2", "rm1", 
-									                 "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome"));
+									                 "rm2", "qbm1", "qbm2", "qam1", "qam2", "observacaoUso", "etniaRedome", "semanaNotificacao"));
 
        PlanilhaMGCSVHandler.criarCSV("./arquivos/csv/PareamentoTotalSivepSus MG.csv", registrosPareamento);
 	}

@@ -5,7 +5,7 @@ public class ParearPacientesCOVIDComEvolucaoCasoRecuperado {
 	public static void main(String[] args) throws Exception {
 		Pareamento pareamento = new Pareamento("Recuperado");
 		
-		pareamento.carregarArquivosCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO).csv", 
+		pareamento.carregarArquivosCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG2(RECUPERADO).csv", 
 				                       "./arquivos/csv/sus/SUS-MG(AposUsoObito).csv");
 		
 		pareamento.parearPacientesEntreSivepESus(20, 
