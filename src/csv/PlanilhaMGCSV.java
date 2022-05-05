@@ -47,6 +47,7 @@ public class PlanilhaMGCSV {
 	private String qam2;
 	private String observacaoUso;
 	private String etniaRedome;
+	private String semanaNotificacao;
 	
 	public PlanilhaMGCSV() {
 	
@@ -105,6 +106,63 @@ public class PlanilhaMGCSV {
 		this.qam2 = qam2;
 		this.observacaoUso = observacaoUso;
 		this.etniaRedome = etniaRedome;
+	}
+	
+	public PlanilhaMGCSV(String laboratoriox, String codigo, String dataNascimento, String municipio,
+			String filtroAreaMunicipio, String urs, String sexo, String idade, String internacao, String internacaoUti,
+			String dataInternacao, String evolucao, String intervalo, String resultadoTeste, String dataTeste,
+			String comorbidade, String comorbidadeDetalhe, String raca, String planilha, String sintomas,
+			String outrosSitomas, String surto, String vacinaCov, String dataColeta, String arquivo,
+			String identificacao, String municipio2, String dataNascimento2, String campo1, String ar, String arx,
+			String am1, String am2, String bm1, String bm2, String cm1, String cm2, String rm1, String rm2, String qbm1,
+			String qbm2, String qam1, String qam2, String observacaoUso, String etniaRedome, String semanaNotificacao) {
+		super();
+		this.laboratoriox = laboratoriox;
+		this.codigo = codigo;
+		this.dataNascimento = dataNascimento;
+		this.municipio = municipio;
+		this.filtroAreaMunicipio = filtroAreaMunicipio;
+		this.urs = urs;
+		this.sexo = sexo;
+		this.idade = idade;
+		this.internacao = internacao;
+		this.internacaoUti = internacaoUti;
+		this.dataInternacao = dataInternacao;
+		this.evolucao = evolucao;
+		this.intervalo = intervalo;
+		this.resultadoTeste = resultadoTeste;
+		this.dataTeste = dataTeste;
+		this.comorbidade = comorbidade;
+		this.comorbidadeDetalhe = comorbidadeDetalhe;
+		this.raca = raca;
+		this.planilha = planilha;
+		this.sintomas = sintomas;
+		this.outrosSitomas = outrosSitomas;
+		this.surto = surto;
+		this.vacinaCov = vacinaCov;
+		this.dataColeta = dataColeta;
+		this.arquivo = arquivo;
+		this.identificacao = identificacao;
+		this.municipio2 = municipio2;
+		this.dataNascimento2 = dataNascimento2;
+		this.campo1 = campo1;
+		this.ar = ar;
+		this.arx = arx;
+		this.am1 = am1;
+		this.am2 = am2;
+		this.bm1 = bm1;
+		this.bm2 = bm2;
+		this.cm1 = cm1;
+		this.cm2 = cm2;
+		this.rm1 = rm1;
+		this.rm2 = rm2;
+		this.qbm1 = qbm1;
+		this.qbm2 = qbm2;
+		this.qam1 = qam1;
+		this.qam2 = qam2;
+		this.observacaoUso = observacaoUso;
+		this.etniaRedome = etniaRedome;
+		this.semanaNotificacao = semanaNotificacao;
 	}
 
 	public String getLaboratoriox() {
@@ -465,6 +523,14 @@ public class PlanilhaMGCSV {
 	
 	public void setEtniaRedome(String etniaRedome) {
 		this.etniaRedome = etniaRedome;
+	}
+	
+	public void setSemanaNotificacao(String semanaNotificacao) {
+		this.semanaNotificacao = semanaNotificacao;
+	}
+	
+	public String getSemanaNotificacao() {
+		return semanaNotificacao;
 	}
 
 }
