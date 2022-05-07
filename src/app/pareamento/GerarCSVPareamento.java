@@ -1,5 +1,7 @@
 package app.pareamento;
 
+import static app.util.StringUtil.normalizarString;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import csv.PlanilhaMGCSV;
 import csv.PlanilhaMGCSVHandler;
+import modelo.RegioesAdministrativas;
 
 public class GerarCSVPareamento {
 	
@@ -37,12 +40,15 @@ public class GerarCSVPareamento {
 	
 	private static void carregarDadosObito() throws IOException {
 		List<PlanilhaMGCSV> registrosSivepFaixa1 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre25E45Anos).csv");
+		registrosSivepFaixa1.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa1.stream().forEach(r -> r.setIntervalo("25-45"));
 		
 		List<PlanilhaMGCSV> registrosSivepFaixa2 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre46E57Anos).csv");
+		registrosSivepFaixa2.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa2.stream().forEach(r -> r.setIntervalo("46-57"));
 		
 		List<PlanilhaMGCSV> registrosSivepFaixa3 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/obito/SIVEP-MG(OBITO-PacientesUsadosEntre58E78Anos).csv");
+		registrosSivepFaixa3.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa3.stream().forEach(r -> r.setIntervalo("58-78"));
 		
 		registrosPareamento.addAll(registrosSivepFaixa1);
@@ -72,12 +78,15 @@ public class GerarCSVPareamento {
 	
 	private static void carregarDadosRecuperado() throws IOException {
 		List<PlanilhaMGCSV> registrosSivepFaixa1 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre20E40Anos).csv");
+		registrosSivepFaixa1.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa1.stream().forEach(r -> r.setIntervalo("20-40"));
 		
 		List<PlanilhaMGCSV> registrosSivepFaixa2 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre41E51Anos).csv");
+		registrosSivepFaixa2.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa2.stream().forEach(r -> r.setIntervalo("41-51"));
 		
 		List<PlanilhaMGCSV> registrosSivepFaixa3 = PlanilhaMGCSVHandler.carregarCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG(RECUPERADO-PacientesUsadosEntre52E74Anos).csv");
+		registrosSivepFaixa3.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(RegioesAdministrativas.obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		registrosSivepFaixa3.stream().forEach(r -> r.setIntervalo("52-74"));
 		
 		registrosPareamento.addAll(registrosSivepFaixa1);
