@@ -89,7 +89,7 @@ public class FiltrosPareamento {
 				
 			}
 			
-			registrosSusFiltradosPorAreaMunicipio.stream().forEach(r -> r.setFiltroAreaMunicipio(obterNomeRegiaoMunicipio(r.getMunicipio())));
+			registrosSusFiltradosPorAreaMunicipio.stream().forEach(r -> r.setFiltroAreaMunicipio(normalizarString(obterNomeRegiaoMunicipio(r.getMunicipio()))));
 		}
 
 		return registrosSusFiltradosPorAreaMunicipio;

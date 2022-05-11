@@ -25,7 +25,7 @@ import csv.PlanilhaMGCSVHandler;
 
 public class Pareamento {
 	
-	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 2; 
+	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 4; 
 
 	private List<PlanilhaMGCSV> registrosSivep;
 	private List<PlanilhaMGCSV> registrosSus;
