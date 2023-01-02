@@ -1,9 +1,9 @@
-package app.pareamento.filtrado;
+package app.pareamento.aleatorio;
 
 public class ParearPacientesCOVIDComEvolucaoCasoRecuperado {
 	
 	public static void main(String[] args) throws Exception {
-		PareamentoFiltrado pareamento = new PareamentoFiltrado("Recuperado");
+		PareamentoAleatorio pareamento = new PareamentoAleatorio("Recuperado");
 		
 		pareamento.carregarArquivosCSV("./arquivos/csv/sivep/recuperado/SIVEP-MG2(RECUPERADO).csv", 
 				                       "./arquivos/csv/sus/SUS-MG(AposUsoObito).csv");

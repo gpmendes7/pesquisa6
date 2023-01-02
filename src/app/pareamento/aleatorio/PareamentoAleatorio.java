@@ -1,12 +1,8 @@
-package app.pareamento.filtrado;
+package app.pareamento.aleatorio;
 
 import static app.pareamento.FiltrosPareamento.filtrarRegistrosPorFaixaEtaria;
 import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusNaoUsados;
-import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusPorAreaMunicipio;
-import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusPorDataTeste;
-import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusPorEtniaRedome;
 import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusPorResultado;
-import static app.pareamento.FiltrosPareamento.filtrarRegistrosSusPorSexo;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -22,7 +19,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import csv.PlanilhaMGCSV;
 import csv.PlanilhaMGCSVHandler;
 
-public class PareamentoFiltrado {
+public class PareamentoAleatorio {
 	
 	private final static int NUMERO_DETECTADO_E_NAO_DETECTADO = 4; 
 
@@ -33,7 +30,7 @@ public class PareamentoFiltrado {
 	private FileWriter fileWriter;
 	private String situacao;
 	
-	public PareamentoFiltrado(String situacao) {
+	public PareamentoAleatorio(String situacao) {
 		this.situacao = situacao;
 	}
 
@@ -88,108 +85,17 @@ public class PareamentoFiltrado {
 			fileWriter.write("registro do sivep com dataNascimento " + registroSivepFiltrado.getDataNascimento() + "\n");
 
 			int filtragem = 1;
-			int numeroSemanas = 1;
+			
 			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoDetectado = new ArrayList<>();
 			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivepComResultadoNaoDetectado = new ArrayList<>();
-
-			while (filtragem < 9 && (registrosSusFiltradosRegistroSivepComResultadoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO
-					             || registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO)) {
-				fileWriter.write("---------------------------\n");
-				fileWriter.write("Filtragem " + filtragem + "\n");
-
-				List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep = filtrarRegistrosSusNaoUsados(registrosSusAtualizado);
-
-				if (filtragem < 9) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosPorFaixaEtaria(registrosSusFiltradosRegistroSivep, 
-							                                                            idadeMinima, idadeMaxima);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por faixa etária\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por faixa etária\n");
-				}
-				
-		
-				if (filtragem < 8) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorEtniaRedome(
-							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por raça cor\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por raça cor\n");
-				}
-
-				if (filtragem < 7) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorDataTeste(
-							registrosSusFiltradosRegistroSivep, registroSivepFiltrado, numeroSemanas);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus com "
-							+ numeroSemanas + " semana(s) para trás e para frente por data de teste\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por data de teste\n");
-				}
-				
-				if (filtragem < 3) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorAreaMunicipio(
-							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por área\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por área\n");
-				}
-
-				/*
-				if (filtragem < 3) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorMunicipio(
-							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por município\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por município\n");
-				}
-
-				if (filtragem == 3) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorAreaMunicipio(
-							registrosSusFiltradosRegistroSivep, registroSivepFiltrado);
-					fileWriter.write("Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por área\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por área\n");
-				}
-				*/
-				
-				if (filtragem < 2) {
-					registrosSusFiltradosRegistroSivep = filtrarRegistrosSusPorSexo(registrosSusFiltradosRegistroSivep,
-							registroSivepFiltrado);
-					fileWriter.write(
-							"Filtrou " + registrosSusFiltradosRegistroSivep.size() + " registros do sus por sexo\n");
-				} else {
-					fileWriter.write("Não filtrou registros do sus por sexo\n");
-				}
-
-				int qtdRegistros;
-
-				if (registrosSusFiltradosRegistroSivepComResultadoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO) {
-					qtdRegistros = NUMERO_DETECTADO_E_NAO_DETECTADO - registrosSusFiltradosRegistroSivepComResultadoDetectado.size();
-					registrosSusFiltradosRegistroSivepComResultadoDetectado.addAll(
-							obterRegistrosSusUsadosComResultadoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
-				}
-
-				if (registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() < NUMERO_DETECTADO_E_NAO_DETECTADO) {
-					qtdRegistros = NUMERO_DETECTADO_E_NAO_DETECTADO - registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size();
-					registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.addAll(
-							obterRegistrosSusUsadosComResultadoNaoDetectado(registrosSusFiltradosRegistroSivep, qtdRegistros));
-				}
-
-				fileWriter.write("Número atual de registros do sus usados com resultado Detectado após filtragem "
-						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoDetectado.size() + "\n");
-				fileWriter.write("Número atual de registros do sus usados com resultado Não Detectado após filtragem "
-						+ filtragem + " : " + registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() + "\n");
-
-				filtragem++;
-
-				if (filtragem > 3 && filtragem < 7) {
-					numeroSemanas++;
-				}
-				
-				if(registrosSusFiltradosRegistroSivepComResultadoDetectado.size() == NUMERO_DETECTADO_E_NAO_DETECTADO &&
-				   registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.size() == NUMERO_DETECTADO_E_NAO_DETECTADO) {
-					break;
-				}
-			}
+            
+			List<PlanilhaMGCSV> registrosSusFiltradosRegistroSivep = filtrarRegistrosSusNaoUsados(registrosSusAtualizado);
+			
+			registrosSusFiltradosRegistroSivepComResultadoDetectado.addAll(
+					obterRegistrosSusUsadosComResultadoDetectado(registrosSusFiltradosRegistroSivep, NUMERO_DETECTADO_E_NAO_DETECTADO));
+			
+			registrosSusFiltradosRegistroSivepComResultadoNaoDetectado.addAll(
+					obterRegistrosSusUsadosComResultadoNaoDetectado(registrosSusFiltradosRegistroSivep, NUMERO_DETECTADO_E_NAO_DETECTADO));
 
 			fileWriter.write("---------------------------\n");
 			fileWriter.write("Resultados finais após filtragem " + (filtragem - 1) + "\n");
@@ -294,8 +200,7 @@ public class PareamentoFiltrado {
 		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoNaoDetectado.size()
 				+ " registros do sus com resultado Não Detectado\n");
 		
-		registrosSusFiltradosComResultadoNaoDetectado.stream().limit(qtd)
-				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
+		selecionarRegistrosSusAleatoriamente(registrosSusFiltradosComResultadoNaoDetectado, qtd);
 		
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoNaoDetectadoUsados = registrosSusFiltradosComResultadoNaoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
@@ -316,8 +221,7 @@ public class PareamentoFiltrado {
 		fileWriter.write("Filtrou " + registrosSusFiltradosComResultadoDetectado.size()
 				+ " registros do sus com resultado Detectado\n");
 		
-		registrosSusFiltradosComResultadoDetectado.stream().limit(qtd)
-				.forEach(r -> r.setObservacaoUso("Registro usado por " + situacao));
+		selecionarRegistrosSusAleatoriamente(registrosSusFiltradosComResultadoDetectado, qtd);
 
 		List<PlanilhaMGCSV> registrosSusFiltradosComResultadoDetectadoUsados = registrosSusFiltradosComResultadoDetectado
 				.stream().filter(r -> r.getObservacaoUso() != null && !r.getObservacaoUso().equals(""))
@@ -330,5 +234,22 @@ public class PareamentoFiltrado {
 
 		return registrosSusFiltradosComResultadoDetectadoUsados;
 	}
+	
+	private List<PlanilhaMGCSV> selecionarRegistrosSusAleatoriamente(List<PlanilhaMGCSV> registrosSus, int qtd) {
+		List<PlanilhaMGCSV> registrosSusSorteados = new ArrayList<PlanilhaMGCSV>();
+		Random rand = new Random();
+			
+		for (int i = 0; i < qtd; i++) {
+			int indiceAleatorio = rand.nextInt(registrosSus.size());
+			PlanilhaMGCSV registroSusSorteado = registrosSus.get(indiceAleatorio);
+			registroSusSorteado.setObservacaoUso("Registro usado por " + situacao);
+			registrosSusSorteados.add(registroSusSorteado);
+			registrosSus.remove(indiceAleatorio);
+		}
+		
+		registrosSus.addAll(registrosSusSorteados);
+		
+		return registrosSusSorteados;
+    }
 
 }
